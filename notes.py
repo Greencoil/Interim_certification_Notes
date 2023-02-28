@@ -9,6 +9,14 @@ def new_file():
     file_name = "No name"
     text.delete('1.0', END)
 
+def save_as():
+    out = asksaveasfile(mode='w', defaultextension='.txt')
+    data = text.get('1.0', END)
+    try:
+        out.write(data.rstrip())
+    except Exception:
+        messagebox.showerror("Oops!", "Can't save this file")
+
 root = Tk()
 root.title("Notes")
 root.geometry("600x600")
