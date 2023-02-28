@@ -6,7 +6,7 @@ file_name = NONE
 
 root = Tk()
 root.title("Notes")
-root.geometry("400x400")
+root.geometry("600x600")
 
 menu_bar = Menu(root)
 file_menu = Menu(menu_bar)
