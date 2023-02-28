@@ -17,6 +17,16 @@ def save_as():
     except Exception:
         messagebox.showerror("Oops!", "Can't save this file")
 
+def open_file():
+    global file_name
+    inp = askopenfile(mode='r')
+    if inp is None:
+        return 
+        file_name = inp.name
+    data = inp.read()
+    text.delete('1.0', END)
+    text.insert('1.0', data)
+
 root = Tk()
 root.title("Notes")
 root.geometry("600x600")
@@ -26,6 +36,10 @@ text.pack()
 
 menu_bar = Menu(root)
 file_menu = Menu(menu_bar)
+
+file_menu.add_command(label="New", command=new_file)
+file_menu.add_command(label="Open", command=open_file)
+file_menu.add_command(label="Save as", command=save_as)
 menu_bar.add_cascade(label="File", menu=file_menu)
 
 root.config(menu=menu_bar)
